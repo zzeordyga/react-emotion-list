@@ -7,6 +7,7 @@ export interface ProjectPagination {
 
 export interface ProjectState {
   data?: Project[];
+  loading: boolean;
   pagination?: ProjectPagination;
 }
 
@@ -35,6 +36,7 @@ export enum ProjectType {
 }
 
 export interface Project {
+  id: string;
   name: string;
   status: ProjectStatus;
   type: ProjectType;

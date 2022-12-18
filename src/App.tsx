@@ -9,6 +9,7 @@ function App() {
       <ProjectContextProvider
         initValue={{
           data: [],
+          loading: true,
         }}
       >
         <Home />

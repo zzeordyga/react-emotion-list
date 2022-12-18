@@ -8,6 +8,7 @@ export const projectReducer = (
     case 'fetch':
       return {
         data: action.data,
+        loading: false,
       };
     case 'archive':
       break;

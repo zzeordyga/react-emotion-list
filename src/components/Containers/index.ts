@@ -20,6 +20,7 @@ export const SemiTransparentContainer = styled.div<Props>`
   position: relative;
   border-radius: 8px;
   min-height: ${(p) => (p.minHeight ? p.minHeight : '0')};
+  position: relative;
 
   @media only screen and (max-width: 540px) {
     border-radius: 0;
@@ -58,8 +59,37 @@ export const Flexbox = styled.div<Props>`
   }
 `;
 
+export const GridContainer = styled.div<Props>`
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+
+    text-align: start;
+
+    &:nth-child(1) {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+    &:nth-child(2) {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    &:nth-child(3) {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+    &:nth-child(4) {
+      grid-area: 1 / 3 / 3 / 4;
+    }
+  }
+`;
+
 export const Card = styled.div<Props>`
   font-weight: bold;
+  margin-top: 16px;
   background-color: ${(p) => (p.backgroundColor ? p.backgroundColor : colors.light)};
   color: ${(p) => (p.color ? p.color : colors.dark)};
   padding: 12px 24px;
@@ -70,9 +100,9 @@ export const Card = styled.div<Props>`
   @media only screen and (max-width: 540px) {
     justify-content: end;
     font-size: ${fontSizes.xs};
+  }
 
-    & > * {
-      margin-left: 16px;
-    }
+  & > span {
+    text-align: left;
   }
 `;

@@ -5,14 +5,13 @@ import {
   GradientContainer,
   SemiTransparentContainer,
   Flexbox,
-  Card,
 } from '../components/Containers';
 import { SubTitle, Title } from '../components/Typography';
 import { Select } from '../components/Inputs/index';
-import { colors, fontSizes } from '../components/index';
 import { Props } from '../types';
 import { SearchBox } from '../components/Inputs/SearchBox';
-import { ProjectContext, ProjectContextDispatch } from '../contexts/ProjectContext';
+import ProjectList from './components/ProjectList';
+import { fontSizes } from '../components';
 
 const TitleName = styled.span`
   font-weight: normal;
@@ -28,9 +27,6 @@ const Header = styled.header<Props>`
 `;
 
 export const Home = () => {
-  const data = useContext(ProjectContext);
-  const dispatch = useContext(ProjectContextDispatch);
-
   return (
     <GradientContainer>
       <CenteredContainer>
@@ -58,12 +54,7 @@ export const Home = () => {
                 </Flexbox>
               </Title>
             </Header>
-            <Card backgroundColor={colors.neutral}>
-              <span>Name</span>
-              <span>Type</span>
-              <span>Status</span>
-              <span>Created At</span>
-            </Card>
+            <ProjectList itemsPerPage={8} />
           </SemiTransparentContainer>
         </section>
       </CenteredContainer>

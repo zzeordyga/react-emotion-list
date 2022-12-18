@@ -1,11 +1,18 @@
 import React from 'react';
 import './App.css';
+import { ProjectContextProvider } from './contexts/ProjectContext';
 import { Home } from './pages';
 
 function App() {
   return (
     <div className='App'>
-      <Home />
+      <ProjectContextProvider
+        initValue={{
+          data: [],
+        }}
+      >
+        <Home />
+      </ProjectContextProvider>
     </div>
   );
 }

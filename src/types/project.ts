@@ -1,3 +1,24 @@
+export type ProjectReducerType = 'fetch' | 'filter' | 'archive' | 'paginate';
+
+export interface ProjectPagination {
+  pageLimit: number;
+  totalData: number;
+}
+
+export interface ProjectState {
+  data?: Project[];
+  pagination?: ProjectPagination;
+}
+
+export interface ProjectReducerAction {
+  id?: number | string;
+  text?: string;
+  filter?: string;
+  sort?: string;
+  data?: Project[];
+  type: ProjectReducerType;
+}
+
 export enum ProjectStatus {
   Incomplete = 'INCOMPLETE',
   Shooting = 'SHOOTING',

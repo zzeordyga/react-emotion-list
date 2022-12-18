@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   CenteredContainer,
   GradientContainer,
@@ -12,6 +12,7 @@ import { Select } from '../components/Inputs/index';
 import { colors, fontSizes } from '../components/index';
 import { Props } from '../types';
 import { SearchBox } from '../components/Inputs/SearchBox';
+import { ProjectContext, ProjectContextDispatch } from '../contexts/ProjectContext';
 
 const TitleName = styled.span`
   font-weight: normal;
@@ -27,6 +28,9 @@ const Header = styled.header<Props>`
 `;
 
 export const Home = () => {
+  const data = useContext(ProjectContext);
+  const dispatch = useContext(ProjectContextDispatch);
+
   return (
     <GradientContainer>
       <CenteredContainer>

@@ -6,6 +6,7 @@ export default interface Props {
   fontSize?: number | string;
   minHeight?: number | string;
   minWidth?: number | string;
+  maxWidth?: number | string;
   margin?: number | string;
   display?: string;
   color?: string;

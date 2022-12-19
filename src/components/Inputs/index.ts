@@ -15,6 +15,7 @@ export const Select = styled.select<Props>`
   vertical-align: top;
 
   border-radius: ${(p) => (p.borderRadius ? p.borderRadius : '4px')};
+  max-width: ${(p) => (p.maxWidth ? p.maxWidth : '100%')};
 
   margin: 0;
   -webkit-box-sizing: border-box;

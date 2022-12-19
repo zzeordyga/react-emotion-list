@@ -5,6 +5,8 @@ import { Card, GridContainer } from '../../../components/Containers';
 import { Project } from '../../../types';
 import { toTitleCase } from '../../../utils/strings';
 import dayjs from 'dayjs';
+import { ProjectStatus } from '../../../types/project';
+import { StatusIcon } from './StatusIcon';
 
 export const ProjectCard = (props: { project: Project }) => {
   const { project } = props;
@@ -22,7 +24,12 @@ export const ProjectCard = (props: { project: Project }) => {
         }
       `}
     >
-      <GridContainer>
+      <GridContainer
+        className={css`
+          text-align: left;
+          margin: auto;
+        `}
+      >
         <div
           className={css`
             @media screen and (max-width: 540px) {
@@ -46,9 +53,28 @@ export const ProjectCard = (props: { project: Project }) => {
             @media screen and (max-width: 540px) {
               font-weight: bolder;
             }
+
+            color: ${project.status === ProjectStatus.Completed
+              ? colors.secondary
+              : project.status === ProjectStatus.Editing ||
+                project.status === ProjectStatus.Feedback
+              ? colors.neutral
+              : project.status === ProjectStatus.Incomplete ||
+                project.status === ProjectStatus.Shooting
+              ? colors.danger
+              : ''};
+            display: flex;
+            align-items: center;
           `}
         >
-          {toTitleCase(project.status)}
+          <StatusIcon status={project.status} />
+          <span
+            className={css`
+              margin-left: 4px;
+            `}
+          >
+            {toTitleCase(project.status)}
+          </span>
         </div>
         <div
           className={css`
@@ -57,7 +83,7 @@ export const ProjectCard = (props: { project: Project }) => {
             }
           `}
         >
-          {dayjs().format('MMMM D, YYYY')}
+          {dayjs(project.createdOn).format('MMMM D, YYYY')}
         </div>
       </GridContainer>
     </Card>

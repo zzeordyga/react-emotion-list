@@ -1,21 +1,22 @@
-export type ProjectReducerType = 'fetch' | 'filter' | 'archive' | 'paginate';
+export type ProjectReducerType = 'fetch' | 'filter' | 'archive' | 'sort';
 
-export interface ProjectPagination {
-  pageLimit: number;
-  totalData: number;
+export enum SortType {
+  Descending = 0,
+  Ascending = 1,
+  Default = -1,
 }
 
 export interface ProjectState {
+  initData?: Project[];
   data?: Project[];
   loading: boolean;
-  pagination?: ProjectPagination;
 }
 
 export interface ProjectReducerAction {
   id?: number | string;
   text?: string;
   filter?: string;
-  sort?: string;
+  sort?: number | SortType;
   data?: Project[];
   type: ProjectReducerType;
 }
@@ -40,7 +41,7 @@ export interface Project {
   name: string;
   status: ProjectStatus;
   type: ProjectType;
-  createdOn: Date;
+  createdOn: string;
   archived: boolean;
 }
 

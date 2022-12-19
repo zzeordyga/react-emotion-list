@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useContext } from 'react';
+import React, { ChangeEvent, useCallback, useContext } from 'react';
 import {
   CenteredContainer,
   GradientContainer,
@@ -12,6 +12,8 @@ import { Props } from '../types';
 import { SearchBox } from '../components/Inputs/SearchBox';
 import ProjectList from './components/ProjectList';
 import { fontSizes } from '../components';
+import { ProjectContextDispatch } from '../contexts/ProjectContext';
+import { SortType } from '../types/project';
 
 const TitleName = styled.span`
   font-weight: normal;
@@ -27,6 +29,15 @@ const Header = styled.header<Props>`
 `;
 
 export const Home = () => {
+  const dispatch = useContext(ProjectContextDispatch);
+
+  const sortList = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
+    dispatch({
+      type: 'sort',
+      sort: parseInt(e.target.value),
+    });
+  }, []);
+
   return (
     <GradientContainer>
       <CenteredContainer>
@@ -44,12 +55,13 @@ export const Home = () => {
                   <SearchBox />
                   <Select
                     className='minimal'
-                    onChange={() => console.log('Say something')}
+                    onChange={sortList}
                     placeholder='Sort By'
+                    defaultValue={-1}
                   >
-                    <option>Sort By</option>
-                    <option value='2'>Yes</option>
-                    <option value='3'>Yes</option>
+                    <option value={SortType.Default}>Sort By</option>
+                    <option value={SortType.Ascending}>Ascending (Created Date)</option>
+                    <option value={SortType.Descending}>Descending (Created Date)</option>
                   </Select>
                 </Flexbox>
               </Title>

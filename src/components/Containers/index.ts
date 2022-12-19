@@ -63,14 +63,16 @@ export const GridContainer = styled.div<Props>`
   display: grid !important;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
+  grid-column-gap: 4px;
+
+  text-align: start;
+  float: left;
+  justify-items: start;
 
   @media screen and (max-width: 540px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 4px;
     grid-row-gap: 4px;
-
-    text-align: start;
 
     &:nth-child(1) {
       grid-area: 1 / 1 / 2 / 3;

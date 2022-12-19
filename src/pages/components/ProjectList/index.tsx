@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import { colors, fontSizes } from '../../../components';
 import { Card } from '../../../components/Containers';
 import { LoadingSpinner } from '../../../components/Loading/Spinner';
-import { ProjectContext, ProjectContextDispatch } from '../../../contexts/ProjectContext';
+import { ProjectContext } from '../../../contexts/ProjectContext';
 import { Project } from '../../../types';
 import { ProjectCard } from './ProjectCard';
 
@@ -26,19 +26,16 @@ const linkCss = css`
 
 const ProjectList = (props: { itemsPerPage: number }) => {
   const { data, loading } = useContext(ProjectContext);
-  const dispatch = useContext(ProjectContextDispatch);
 
   const [itemOffset, setItemOffset] = useState(0);
 
   const { itemsPerPage } = props;
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = (data as Project[]).slice(itemOffset, endOffset);
   const pageCount = Math.ceil((data as Project[]).length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % (data as Project[]).length;
-    console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
     setItemOffset(newOffset);
   };
 

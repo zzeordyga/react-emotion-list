@@ -43,11 +43,25 @@ const ProjectList = (props: { itemsPerPage: number }) => {
     <>
       <div>
         <Card
+          display='flex'
+          justifyContent='space-evenly'
           backgroundColor={colors.secondary}
           color={colors.light}
           className={css`
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 4px;
+            justify-content: center;
+            align-items: center;
+
             & > * {
-              margin-left: 16px;
+              text-align: center;
+            }
+
+            @media screen and (max-width: 540px) {
+              & > * {
+                margin-left: 16px;
+              }
             }
           `}
         >

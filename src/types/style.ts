@@ -10,6 +10,7 @@ export default interface Props {
   display?: string;
   color?: string;
   backgroundColor?: string;
+  grid?: boolean;
   flexDirection?: FlexDirection;
   switchDirection?: boolean;
   justifyContent?: string;

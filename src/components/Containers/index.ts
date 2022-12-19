@@ -96,8 +96,8 @@ export const Card = styled.div<Props>`
   color: ${(p) => (p.color ? p.color : colors.dark)};
   padding: 12px 24px;
   border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
+  display: ${(props) => props.display};
+  justify-content: ${(props) => props.justifyContent};
 
   @media only screen and (max-width: 540px) {
     justify-content: end;

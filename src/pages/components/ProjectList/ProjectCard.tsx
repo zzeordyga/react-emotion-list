@@ -1,7 +1,7 @@
 import { css } from '@emotion/css';
 import React from 'react';
 import { colors, fontSizes } from '../../../components';
-import { Card, GridContainer } from '../../../components/Containers';
+import { Card } from '../../../components/Containers';
 import { Project } from '../../../types';
 import { toTitleCase } from '../../../utils/strings';
 import dayjs from 'dayjs';
@@ -67,11 +67,11 @@ export const ProjectCard = (props: { project: Project }) => {
           color: ${project.status === ProjectStatus.Completed
             ? colors.secondary
             : project.status === ProjectStatus.Editing || project.status === ProjectStatus.Feedback
-            ? colors.neutral
-            : project.status === ProjectStatus.Incomplete ||
-              project.status === ProjectStatus.Shooting
-            ? colors.danger
-            : ''};
+              ? colors.neutral
+              : project.status === ProjectStatus.Incomplete ||
+                project.status === ProjectStatus.Shooting
+                ? colors.danger
+                : ''};
           display: flex;
           align-items: center;
         `}

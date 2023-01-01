@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 import styled from '@emotion/styled';
 import React, { useCallback, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { defaultInputCss, Select } from '..';
+import { defaultInputCss } from '..';
 import { colors, fontSizes } from '../..';
 import { ProjectContextDispatch } from '../../../contexts/ProjectContext';
 

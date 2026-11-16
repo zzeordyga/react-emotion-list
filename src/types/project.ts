@@ -1,26 +1,3 @@
-export type ProjectReducerType = 'fetch' | 'filter' | 'archive' | 'sort';
-
-export enum SortType {
-  Descending = 0,
-  Ascending = 1,
-  Default = -1,
-}
-
-export interface ProjectState {
-  initData?: Project[];
-  data?: Project[];
-  loading: boolean;
-}
-
-export interface ProjectReducerAction {
-  id?: number | string;
-  text?: string;
-  filter?: string;
-  sort?: number | SortType;
-  data?: Project[];
-  type: ProjectReducerType;
-}
-
 export enum ProjectStatus {
   Incomplete = 'INCOMPLETE',
   Shooting = 'SHOOTING',
@@ -45,4 +22,12 @@ export interface Project {
   archived: boolean;
 }
 
-export default Project;
+export enum SortType {
+  Descending = 0,
+  Ascending = 1,
+  Default = -1,
+}
+
+export interface DbShape {
+  data: Project[];
+}
